@@ -8,14 +8,11 @@ import {
   ModalFooter
 } from "reactstrap";
 import { Form, Field } from "react-final-form";
+const isnum = require("is-number");
 
-const onSubmit = values => {
-  console.log(values);
-};
-
-const AddInvoiceForm = () => (
+const AddInvoiceForm = props => (
   <Form
-    onSubmit={onSubmit}
+    onSubmit={props.onSubmit}
     validate={values => {
       const errors = {};
 
@@ -29,6 +26,9 @@ const AddInvoiceForm = () => (
         errors.invno = "Required";
       }
 
+      if (!isnum(values.invno)) {
+        errors.invno = "Not a number";
+      }
       return errors;
     }}
     render={({ handleSubmit, values, submitting, validating, valid }) => (
@@ -51,7 +51,6 @@ const AddInvoiceForm = () => (
             </Field>
           </FormGroup>
 
-          {/* конкретно эта часть отвечает за дату создания */}
           <FormGroup>
             <Label for="date">Invoice date</Label>
             <Field name="date">

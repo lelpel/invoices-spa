@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalHeader } from "reactstrap";
 import AddInvoiceForm from "./AddInvoiceForm";
+import { Row } from "reactstrap";
 class AddInvoice extends React.Component {
   constructor(props) {
     super(props);
@@ -19,9 +20,8 @@ class AddInvoice extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.children}
-        <Button color="danger" onClick={this.toggle}>
+      <Row className="justify-content-center mt-3 mb-3">
+        <Button color="info" onClick={this.toggle}>
           {this.props.buttonLabel}
         </Button>
         <Modal
@@ -30,9 +30,9 @@ class AddInvoice extends React.Component {
           className={this.props.className}
         >
           <ModalHeader toggle={this.toggle}>Add invoice</ModalHeader>
-          <AddInvoiceForm />
+          <AddInvoiceForm onSubmit={this.props.onSubmit} />
         </Modal>
-      </div>
+      </Row>
     );
   }
 }
