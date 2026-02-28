@@ -10,7 +10,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-final-form": "^4.1.0",
-    "react-scripts": "2.1.5",
+    "react-scripts": "5.0.1",
     "reactstrap": "^7.1.0"
   },
   "scripts": {
